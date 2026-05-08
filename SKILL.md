@@ -1,9 +1,22 @@
 ---
 name: lit-best-practices
-description: "Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — writing components, auditing for accessibility or performance, integrating async data, sharing state across components, or testing. 44 rules across 10 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing) ranked by impact."
+description: |
+  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 44 rules across 10 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing) ranked by impact.
+  TRIGGER when: planning or designing Lit web components; generating new Lit component code; updating or extending existing Lit components; reviewing or auditing Lit code for correctness, accessibility, or performance; debugging reactive property or lifecycle issues; writing tests for custom elements.
+  SKIP: questions about non-Lit UI frameworks (React, Vue, Angular, Solid) with no Lit code involved; general HTML/CSS questions without web component context.
 license: MIT
 author: community
 version: 1.1.0
+allowed-tools:
+  - Read
+  - Grep
+  - Glob
+metadata:
+  topics:
+    - claude-skills
+    - claude-code-skill
+    - lit
+    - web-components
 ---
 
 # Lit Web Components Best Practices
