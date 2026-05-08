@@ -1,9 +1,9 @@
 ---
 name: lit-best-practices
-description: Lit web components best practices and performance optimization guidelines. Use when writing, reviewing, or refactoring Lit web components. Triggers on tasks involving Lit components, custom elements, shadow DOM, reactive properties, or web component performance.
+description: "Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — writing components, auditing for accessibility or performance, integrating async data, sharing state across components, or testing. 44 rules across 10 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing) ranked by impact."
 license: MIT
 author: community
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Lit Web Components Best Practices
@@ -24,13 +24,16 @@ Reference these guidelines when:
 
 | Category | Rules | Focus |
 |----------|-------|-------|
-| 1. Component Structure | 4 rules | Properties, state, TypeScript |
+| 1. Component Structure | 5 rules | Properties, state, TypeScript, slots |
 | 2. Rendering | 5 rules | Templates, directives, derived state |
 | 3. Styling | 4 rules | Static styles, theming, CSS parts |
 | 4. Events | 3 rules | Custom events, naming, cleanup |
-| 5. Lifecycle | 4 rules | Callbacks, timing, async |
+| 5. Lifecycle | 5 rules | Callbacks, timing, async, SSR safety |
 | 6. Accessibility | 3 rules | ARIA, focus, forms |
 | 7. Performance | 4 rules | Updates, caching, lazy loading |
+| 8. Reactive Controllers | 4 rules | Reusable behaviors, async tasks, observers |
+| 9. Context API | 3 rules | Cross-component state, provider scope |
+| 10. Testing | 8 rules | Setup, rendering, assertions, events, a11y |
 
 ## Priority Levels
 
@@ -48,6 +51,7 @@ Reference these guidelines when:
 - `rules/1-2-separate-state.md` - Separate Public Properties from Internal State (HIGH)
 - `rules/1-3-reflect-sparingly.md` - Reflect Properties Sparingly (MEDIUM)
 - `rules/1-4-default-values.md` - Always Provide Default Values (HIGH)
+- `rules/1-5-slot-composition.md` - Slot Composition Patterns (HIGH)
 
 ### 2. Rendering
 - `rules/2-1-pure-render.md` - Keep render() Pure (CRITICAL)
@@ -72,6 +76,7 @@ Reference these guidelines when:
 - `rules/5-2-first-updated.md` - Use firstUpdated for DOM Operations (HIGH)
 - `rules/5-3-will-update.md` - Use willUpdate for Derived State (HIGH)
 - `rules/5-4-update-complete.md` - Async Operations with updateComplete (MEDIUM)
+- `rules/5-5-ssr-safe-construction.md` - SSR-Safe Construction (MEDIUM)
 
 ### 6. Accessibility
 - `rules/6-1-delegates-focus.md` - delegatesFocus for Interactive Components (HIGH)
@@ -83,6 +88,76 @@ Reference these guidelines when:
 - `rules/7-2-batch-updates.md` - Batch Property Updates (MEDIUM)
 - `rules/7-3-lazy-loading.md` - Lazy Load Heavy Dependencies (HIGH)
 - `rules/7-4-memoization.md` - Memoize Expensive Computations (MEDIUM)
+
+### 8. Reactive Controllers
+- `rules/8-1-use-reactive-controllers.md` - Use Reactive Controllers for Reusable Behaviors (HIGH)
+- `rules/8-2-implement-controller-interface.md` - Implement the ReactiveController Interface Correctly (HIGH)
+- `rules/8-3-use-task-for-async.md` - Use @lit/task for Async Data Fetching (HIGH)
+- `rules/8-4-dom-observers-via-controller.md` - Wrap DOM Observers in Reactive Controllers (MEDIUM)
+
+### 9. Context API
+- `rules/9-1-use-context-for-shared-state.md` - Use @lit/context for Cross-Component State (HIGH)
+- `rules/9-2-scope-context-providers.md` - Scope Context Providers at the Right Level (MEDIUM)
+- `rules/9-3-prefer-context-over-prop-threading.md` - Prefer Context over Deep Property Threading (MEDIUM)
+
+### 10. Testing
+- `rules/10-1-configure-web-test-runner.md` - Configure @web/test-runner with @open-wc/testing (CRITICAL)
+- `rules/10-2-use-fixture-for-rendering.md` - Use fixture() for Component Instantiation (HIGH)
+- `rules/10-3-await-update-complete.md` - Await updateComplete Before DOM Assertions (HIGH)
+- `rules/10-4-query-shadow-dom.md` - Query Shadow DOM Elements Correctly in Tests (HIGH)
+- `rules/10-5-test-custom-events.md` - Test Custom Events with oneEvent() (HIGH)
+- `rules/10-6-test-slot-rendering.md` - Test Slot Content Rendering (MEDIUM)
+- `rules/10-7-test-controllers-in-isolation.md` - Test Reactive Controllers Without a Host Element (MEDIUM)
+- `rules/10-8-test-accessibility.md` - Test Accessibility with axe-core (MEDIUM)
+
+## Task-Based Rule Selection
+
+### Writing New Components
+- `1-1-use-decorators.md` — property declarations
+- `1-2-separate-state.md` — public vs internal state
+- `1-5-slot-composition.md` — distributing light DOM
+- `3-1-static-styles.md` — styling approach
+- `4-1-composed-events.md` — event configuration
+- `5-5-ssr-safe-construction.md` — avoid browser globals in constructor
+
+### Sharing State Across Components
+- `9-1-use-context-for-shared-state.md` — context basics
+- `9-2-scope-context-providers.md` — provider placement
+- `9-3-prefer-context-over-prop-threading.md` — when to switch from props
+
+### Async Data Fetching
+- `8-3-use-task-for-async.md` — Task controller
+- `8-1-use-reactive-controllers.md` — controller pattern
+
+### Code Review
+Check for violations of CRITICAL rules:
+- `2-1-pure-render.md` — side effects in render()
+- `3-1-static-styles.md` — inline styles in templates
+- `4-1-composed-events.md` — events not composed
+- `5-1-super-call-order.md` — wrong super() order
+- `6-2-aria-attributes.md` — missing accessibility
+- `10-1-configure-web-test-runner.md` — test setup correctness
+
+### Performance Optimization
+- `2-3-use-repeat.md` — list rendering
+- `2-5-derived-state.md` — expensive computations
+- `7-1-has-changed.md` — update optimization
+- `7-3-lazy-loading.md` — code splitting
+- `8-4-dom-observers-via-controller.md` — observer lifecycle
+
+### Accessibility Audit
+- `6-1-delegates-focus.md` — focus handling
+- `6-2-aria-attributes.md` — ARIA implementation
+- `6-3-form-associated.md` — form integration
+- `10-8-test-accessibility.md` — automated axe-core testing
+
+### Testing
+- `10-1-configure-web-test-runner.md` — test runner setup (CRITICAL)
+- `10-2-use-fixture-for-rendering.md` — component instantiation
+- `10-3-await-update-complete.md` — async assertion timing
+- `10-4-query-shadow-dom.md` — querying rendered output
+- `10-5-test-custom-events.md` — event assertions
+- `10-7-test-controllers-in-isolation.md` — unit testing controllers
 
 ## Quick Reference
 
@@ -98,6 +173,16 @@ import { repeat } from 'lit/directives/repeat.js';
 import { cache } from 'lit/directives/cache.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { until } from 'lit/directives/until.js';
+
+// Reactive Controllers
+import type { ReactiveController, ReactiveControllerHost } from 'lit';
+import { Task } from '@lit/task';
+
+// Context API
+import { createContext, provide, consume } from '@lit/context';
+
+// Testing
+import { fixture, expect, html, oneEvent } from '@open-wc/testing';
 ```
 
 ### Component Skeleton

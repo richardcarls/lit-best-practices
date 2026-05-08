@@ -1,8 +1,8 @@
 {
   "name": "lit-best-practices",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Lit web components best practices for AI agents and LLMs",
-  "abstract": "Comprehensive best practices guide for Lit web components, designed for AI agents and LLMs. Contains 27 rules across 7 categories, prioritized by impact from critical (pure render, static styles, composed events) to incremental (memoization, batching). Each rule includes detailed explanations, real-world examples comparing incorrect vs. correct implementations, and specific impact descriptions to guide automated refactoring and code generation.",
+  "abstract": "Comprehensive best practices guide for Lit web components, designed for AI agents and LLMs. Contains 44 rules across 10 categories, prioritized by impact from critical (pure render, static styles, composed events, test setup) to incremental (memoization, batching, controller isolation testing). Each rule includes detailed explanations, real-world examples comparing incorrect vs. correct implementations, and specific impact descriptions to guide automated refactoring and code generation. New in v1.1: reactive controllers, @lit/task for async, @lit/context for shared state, slot composition, SSR-safe construction, and a full testing category using @web/test-runner and @open-wc/testing.",
   "author": "community",
   "license": "MIT",
   "keywords": [
@@ -10,6 +10,12 @@
     "web-components",
     "custom-elements",
     "shadow-dom",
+    "reactive-controllers",
+    "lit-context",
+    "lit-task",
+    "testing",
+    "web-test-runner",
+    "open-wc",
     "best-practices",
     "ai-agents",
     "llm",
@@ -17,6 +23,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/artmsilva/agent-skill-lit-best-practices"
+    "url": "https://github.com/richardcarls/lit-best-practices"
   }
 }

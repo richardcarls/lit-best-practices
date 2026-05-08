@@ -4,24 +4,27 @@ A Claude Code skill containing comprehensive best practices for building Lit web
 
 ## Overview
 
-This skill contains 27 rules across 7 categories, prioritized by impact to guide automated refactoring and code generation:
+This skill contains 44 rules across 10 categories, prioritized by impact to guide automated refactoring and code generation:
 
 | Category | Rules | Focus |
-|----------|-------|-------|
-| Component Structure | 4 | Properties, state, TypeScript patterns |
+| --- | --- | --- |
+| Component Structure | 5 | Properties, state, TypeScript patterns, slots |
 | Rendering | 5 | Templates, directives, performance |
 | Styling | 4 | Static styles, theming, CSS parts |
 | Events | 3 | Custom events, naming, cleanup |
-| Lifecycle | 4 | Callbacks, timing, async patterns |
+| Lifecycle | 5 | Callbacks, timing, async patterns, SSR safety |
 | Accessibility | 3 | ARIA, focus, form association |
 | Performance | 4 | Updates, caching, lazy loading |
+| Reactive Controllers | 4 | Reusable behaviors, async tasks, DOM observers |
+| Context API | 3 | Cross-component state, provider scope |
+| Testing | 8 | Setup, rendering, assertions, events, a11y |
 
 ## Installation
 
 ### Claude Code
 
 ```bash
-npx skills add artmsilva/lit-best-practices
+npx skills add richardcarls/lit-best-practices
 ```
 
 ### Manual Installation
@@ -77,12 +80,15 @@ Rules are categorized by impact:
 ## Key Patterns Covered
 
 ### Component Structure
+
 - TypeScript decorators for properties
 - Separating public API (`@property`) from internal state (`@state`)
 - Property reflection guidelines
 - Default values and type safety
+- Named and default slot composition
 
 ### Rendering
+
 - Pure `render()` methods
 - Using `nothing` for conditional content
 - `repeat()` directive for keyed lists
@@ -90,33 +96,62 @@ Rules are categorized by impact:
 - Derived state in `willUpdate()`
 
 ### Styling
+
 - Static styles (never inline `<style>`)
 - `:host` element styling patterns
 - CSS custom properties for theming
 - CSS parts for deep customization
 
 ### Events
+
 - Composed events for shadow DOM
 - Naming conventions
 - Event listener cleanup
 
 ### Lifecycle
+
 - Correct `super` call ordering
 - `firstUpdated` for DOM operations
 - `willUpdate` vs `updated` usage
 - Async patterns with `updateComplete`
+- SSR-safe construction (no browser globals in constructor)
 
 ### Accessibility
+
 - `delegatesFocus` for interactive components
 - ARIA roles and states
 - Keyboard interaction
 - Form-associated custom elements
 
 ### Performance
+
 - Custom `hasChanged` functions
 - Property update batching
 - Lazy loading
 - Memoization patterns
+
+### Reactive Controllers
+
+- Creating reusable reactive behaviors
+- Implementing the `ReactiveController` interface correctly
+- `@lit/task` for async data fetching with abort signals
+- Wrapping `ResizeObserver`, `IntersectionObserver`, `MutationObserver` in controllers
+
+### Context API
+
+- `@lit/context` for cross-component state sharing
+- Scoping providers at the correct ancestor level
+- When to use context vs. property threading
+
+### Testing
+
+- `@web/test-runner` + `@open-wc/testing` configuration
+- `fixture()` for connected, rendered component instantiation
+- Awaiting `updateComplete` before DOM assertions
+- Querying shadow DOM correctly
+- Asserting custom events with `oneEvent()`
+- Testing slot content and reactive controllers in isolation
+- Automated accessibility testing with axe-core
 
 ## Reference Resources
 
