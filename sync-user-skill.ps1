@@ -6,6 +6,7 @@ $src = $PSScriptRoot
 $dsts = @(
     Join-Path $env:USERPROFILE '.claude\skills\lit-best-practices'
     Join-Path $env:USERPROFILE '.ai\skills\lit-best-practices'
+    Join-Path $env:USERPROFILE '.agents\skills\lit-best-practices'
 )
 
 foreach ($dst in $dsts) {

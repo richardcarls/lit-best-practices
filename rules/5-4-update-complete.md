@@ -58,7 +58,15 @@ async selectAndHighlight(id: string) {
 }
 ```
 
-**Note:** `updateComplete` returns a Promise that resolves after:
-1. The `render()` method completes
-2. The DOM is updated
-3. Any child components with pending updates also complete (if awaited)
+**`updateComplete` only waits for the host component:**
+
+`await host.updateComplete` resolves when the host element's own Lit update cycle finishes — not when child components finish their updates. If a child's update matters for your next operation, await its `updateComplete` separately:
+
+```typescript
+await host.updateComplete;
+
+const listbox = host.shadowRoot!.querySelector('rc-listbox') as LitElement;
+await listbox.updateComplete; // wait for the child's own render
+```
+
+This distinction is easy to miss when a component delegates rendering to child Lit elements. A test that asserts on a child's output after only awaiting the host will read stale DOM.

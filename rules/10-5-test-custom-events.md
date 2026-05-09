@@ -97,3 +97,19 @@ expect(event.bubbles).to.be.true;           // verify propagation
 expect(event.composed).to.be.true;          // verify shadow DOM traversal
 expect(event.detail).to.deep.equal({ value: 42 });
 ```
+
+**Synthetic events do not cross shadow boundaries by default:**
+
+`new PointerEvent('pointerdown', { bubbles: true })` has `composed: false`. Synthetic events dispatched inside a shadow root will **not** bubble past the shadow boundary. Native pointer events from real user interaction are `composed: true`; test-synthesized ones are not unless you set it explicitly.
+
+If a component relies on document-level event delegation to handle pointer or keyboard events, tests that synthesize events without `composed: true` will silently miss those handlers — and the test will pass for the wrong reason.
+
+```typescript
+// Incorrect — composed: false by default; won't reach document-level listeners
+el.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, cancelable: true }));
+
+// Correct — matches real browser behavior for events that cross shadow roots
+el.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, cancelable: true, composed: true }));
+```
+
+Use `.composed: true` when synthesizing any event that a real user interaction would dispatch with it — pointer events, keyboard events, focus events, and most input events. Check `event.composed` on real events with DevTools if unsure.

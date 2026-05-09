@@ -86,3 +86,38 @@ el.value = 'world';
 await el.updateComplete; // Required for this second change
 expect(el.shadowRoot!.querySelector('.value')?.textContent).to.equal('world');
 ```
+
+**Slotchange-deferred state requires a microtask flush:**
+
+When a `slotchange` handler defers its mutations via `queueMicrotask` (see rule `5-6-defer-slotchange-mutations.md`), `await host.updateComplete` is not enough — it resolves before the microtask queue drains. Tests that immediately interact with slot-driven state (clicking options, pressing arrow keys) will find an uninitialized component.
+
+Add a microtask flush in any test helper that returns a freshly rendered host from a component that defers slot initialization:
+
+```typescript
+async function getHost(screen): Promise<MySelect> {
+  const host = screen.container.querySelector('my-select') as MySelect;
+  await host.updateComplete;
+  await new Promise(r => setTimeout(r, 0)); // flush slotchange microtask
+  return host;
+}
+```
+
+`setTimeout(r, 0)` schedules a macrotask — it runs after all pending microtasks (including the `queueMicrotask` callback) have flushed.
+
+**Write assertions that check values, not just types:**
+
+An assertion that passes for empty or falsy inputs gives false confidence. Check concrete values:
+
+```typescript
+// Incorrect — passes for any array, including []
+expect(Array.isArray(detail.value)).toBe(true);
+
+// Correct — proves the right items were selected
+expect(detail.value).toEqual(['apple', 'banana']);
+
+// Incorrect — passes even if the handler was called with wrong arguments
+expect(handler).toHaveBeenCalledOnce();
+
+// Correct — proves both call count and argument shape
+expect(handler).toHaveBeenCalledOnceWith(expect.objectContaining({ value: 'apple' }));
+```
