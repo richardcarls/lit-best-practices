@@ -1,20 +1,20 @@
 ---
 name: lit-best-practices
 description: |
-  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 44 rules across 10 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing) ranked by impact.
+  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 46 rules across 10 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing) ranked by impact.
   TRIGGER when: planning or designing Lit web components; generating new Lit component code; updating or extending existing Lit components; reviewing or auditing Lit code for correctness, accessibility, or performance; debugging reactive property or lifecycle issues; writing tests for custom elements.
   SKIP: questions about non-Lit UI frameworks (React, Vue, Angular, Solid) with no Lit code involved; general HTML/CSS questions without web component context.
 license: MIT
 author: community
-version: 1.1.0
+version: 1.2.0
 allowed-tools:
   - Read
   - Grep
   - Glob
 metadata:
   topics:
-    - claude-skills
-    - claude-code-skill
+    - ai-agent-skill
+    - llm-skill
     - lit
     - web-components
 ---
@@ -41,8 +41,8 @@ Reference these guidelines when:
 | 2. Rendering | 5 rules | Templates, directives, derived state |
 | 3. Styling | 4 rules | Static styles, theming, CSS parts |
 | 4. Events | 3 rules | Custom events, naming, cleanup |
-| 5. Lifecycle | 5 rules | Callbacks, timing, async, SSR safety |
-| 6. Accessibility | 3 rules | ARIA, focus, forms |
+| 5. Lifecycle | 6 rules | Callbacks, timing, async, SSR safety |
+| 6. Accessibility | 4 rules | ARIA, focus, forms |
 | 7. Performance | 4 rules | Updates, caching, lazy loading |
 | 8. Reactive Controllers | 4 rules | Reusable behaviors, async tasks, observers |
 | 9. Context API | 3 rules | Cross-component state, provider scope |
@@ -90,11 +90,13 @@ Reference these guidelines when:
 - `rules/5-3-will-update.md` - Use willUpdate for Derived State (HIGH)
 - `rules/5-4-update-complete.md` - Async Operations with updateComplete (MEDIUM)
 - `rules/5-5-ssr-safe-construction.md` - SSR-Safe Construction (MEDIUM)
+- `rules/5-6-defer-slotchange-mutations.md` - Defer DOM Mutations in Slotchange Handlers (CRITICAL)
 
 ### 6. Accessibility
 - `rules/6-1-delegates-focus.md` - delegatesFocus for Interactive Components (HIGH)
 - `rules/6-2-aria-attributes.md` - ARIA for Custom Interactive Components (CRITICAL)
 - `rules/6-3-form-associated.md` - Form-Associated Custom Elements (HIGH)
+- `rules/6-4-popover-focus-management.md` - Popover Focus Return Management (HIGH)
 
 ### 7. Performance
 - `rules/7-1-has-changed.md` - Custom hasChanged for Complex Types (HIGH)
@@ -126,12 +128,13 @@ Reference these guidelines when:
 ## Task-Based Rule Selection
 
 ### Writing New Components
-- `1-1-use-decorators.md` — property declarations
-- `1-2-separate-state.md` — public vs internal state
+- `1-1-use-decorators.md` — property declarations + tsconfig `useDefineForClassFields: false`
+- `1-2-separate-state.md` — public vs internal state; Set/Map mutation trap
 - `1-5-slot-composition.md` — distributing light DOM
 - `3-1-static-styles.md` — styling approach
 - `4-1-composed-events.md` — event configuration
 - `5-5-ssr-safe-construction.md` — avoid browser globals in constructor
+- `5-6-defer-slotchange-mutations.md` — safe slotchange handler pattern
 
 ### Sharing State Across Components
 - `9-1-use-context-for-shared-state.md` — context basics
@@ -148,6 +151,7 @@ Check for violations of CRITICAL rules:
 - `3-1-static-styles.md` — inline styles in templates
 - `4-1-composed-events.md` — events not composed
 - `5-1-super-call-order.md` — wrong super() order
+- `5-6-defer-slotchange-mutations.md` — synchronous DOM mutations in slotchange handlers
 - `6-2-aria-attributes.md` — missing accessibility
 - `10-1-configure-web-test-runner.md` — test setup correctness
 
@@ -167,10 +171,11 @@ Check for violations of CRITICAL rules:
 ### Testing
 - `10-1-configure-web-test-runner.md` — test runner setup (CRITICAL)
 - `10-2-use-fixture-for-rendering.md` — component instantiation
-- `10-3-await-update-complete.md` — async assertion timing
+- `10-3-await-update-complete.md` — async assertion timing + microtask flush for slotchange
 - `10-4-query-shadow-dom.md` — querying rendered output
-- `10-5-test-custom-events.md` — event assertions
+- `10-5-test-custom-events.md` — event assertions + synthetic event `composed` flag
 - `10-7-test-controllers-in-isolation.md` — unit testing controllers
+- `6-4-popover-focus-management.md` — keyboard/focus tests for popover-based components
 
 ## Quick Reference
 

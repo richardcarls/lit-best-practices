@@ -1,6 +1,6 @@
 # Lit Web Components Best Practices
 
-A Claude Code skill containing comprehensive best practices for building Lit web components, optimized for AI-assisted code generation, review, and refactoring.
+A reusable AI agent skill containing comprehensive best practices for building Lit web components, optimized for code generation, review, and refactoring.
 
 ## Overview
 
@@ -21,7 +21,7 @@ This skill contains 44 rules across 10 categories, prioritized by impact to guid
 
 ## Installation
 
-### Claude Code
+### AI Agent Platforms
 
 ```bash
 npx skills add richardcarls/lit-best-practices
@@ -29,7 +29,7 @@ npx skills add richardcarls/lit-best-practices
 
 ### Manual Installation
 
-Add the skill folder to your project knowledge or paste `SKILL.md` into a Claude conversation.
+Add the skill folder to your project knowledge or paste `SKILL.md` into your agent prompt.
 
 ## Structure
 
@@ -49,7 +49,7 @@ The rules are split into individual files so agents can load only the rules rele
 
 ## Usage
 
-The skill automatically activates when Claude detects tasks involving:
+The skill automatically activates when an AI agent detects tasks involving:
 
 - Lit web components
 - Custom elements
