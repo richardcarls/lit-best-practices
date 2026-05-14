@@ -132,3 +132,5 @@ export class MySwitch extends LitElement {
 - [ ] `aria-label` or `aria-labelledby` for accessible name
 - [ ] Keyboard handlers for Space, Enter, Arrow keys as appropriate
 - [ ] Visual focus indicator
+
+**Slotted content guidance:** Put ARIA semantics where the accessible flat tree can see the interactive content. If the host wraps slotted controls, synchronize relationships such as `aria-controls` and `aria-labelledby` without hiding consumer-provided labels. Do not stomp author-provided `role`, `tabindex`, or `aria-*` attributes; set defaults only when the author has not supplied one.

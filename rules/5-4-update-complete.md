@@ -65,7 +65,7 @@ async selectAndHighlight(id: string) {
 ```typescript
 await host.updateComplete;
 
-const listbox = host.shadowRoot!.querySelector('rc-listbox') as LitElement;
+const listbox = host.shadowRoot!.querySelector('wc-listbox') as LitElement;
 await listbox.updateComplete; // wait for the child's own render
 ```
 

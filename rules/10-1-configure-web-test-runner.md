@@ -91,3 +91,5 @@ describe('MyElement', () => {
 | Properties set but DOM not updated | Missing `await el.updateComplete` | Await before assertion (see rule 10-3) |
 | `expect(...).to.equalSnapshot()` not found | Missing `@open-wc/testing` import | Import from `'@open-wc/testing'` not `'chai'` |
 | Tests pass in CI but fail locally | Browser binary not installed | Run `npx playwright install chromium` |
+
+**Vitest browser mode alternative:** For current projects, Vitest browser mode with the Playwright provider is also a strong default. Prefer Playwright-backed Chrome and Firefox projects when validating custom element timing, native controls, focus behavior, and cross-browser event semantics. Web Test Runner with open-wc remains a good fit for libraries already standardized on that stack.

@@ -1,12 +1,12 @@
 ---
 name: lit-best-practices
 description: |
-  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 46 rules across 10 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing) ranked by impact.
+  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 51 rules across 11 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing, custom element interop/API design) ranked by impact.
   TRIGGER when: planning or designing Lit web components; generating new Lit component code; updating or extending existing Lit components; reviewing or auditing Lit code for correctness, accessibility, or performance; debugging reactive property or lifecycle issues; writing tests for custom elements.
   SKIP: questions about non-Lit UI frameworks (React, Vue, Angular, Solid) with no Lit code involved; general HTML/CSS questions without web component context.
 license: MIT
 author: community
-version: 1.2.0
+version: 1.3.0
 allowed-tools:
   - Read
   - Grep
@@ -47,6 +47,7 @@ Reference these guidelines when:
 | 8. Reactive Controllers | 4 rules | Reusable behaviors, async tasks, observers |
 | 9. Context API | 3 rules | Cross-component state, provider scope |
 | 10. Testing | 8 rules | Setup, rendering, assertions, events, a11y |
+| 11. Custom Element Interop/API Design | 5 rules | Controlled/default APIs, events, light DOM, rich data |
 
 ## Priority Levels
 
@@ -125,6 +126,12 @@ Reference these guidelines when:
 - `rules/10-7-test-controllers-in-isolation.md` - Test Reactive Controllers Without a Host Element (MEDIUM)
 - `rules/10-8-test-accessibility.md` - Test Accessibility with axe-core (MEDIUM)
 
+### 11. Custom Element Interop/API Design
+- `rules/11-1-controlled-default-apis.md` - Controlled and Default APIs (HIGH)
+- `rules/11-2-silent-host-writes.md` - Silent Host Writes (HIGH)
+- `rules/11-3-light-dom-progressive-enhancement.md` - Light DOM Progressive Enhancement (HIGH)
+- `rules/11-4-rich-data-properties.md` - Rich Data Properties (HIGH)
+- `rules/11-5-author-attributes-and-upgrade.md` - Author Attributes and Upgrade Safety (HIGH)
 ## Task-Based Rule Selection
 
 ### Writing New Components
@@ -135,6 +142,8 @@ Reference these guidelines when:
 - `4-1-composed-events.md` — event configuration
 - `5-5-ssr-safe-construction.md` — avoid browser globals in constructor
 - `5-6-defer-slotchange-mutations.md` — safe slotchange handler pattern
+- `11-1-controlled-default-apis.md` — framework-safe value/open APIs
+- `11-3-light-dom-progressive-enhancement.md` — declarative fallback/native source sync
 
 ### Sharing State Across Components
 - `9-1-use-context-for-shared-state.md` — context basics
@@ -169,7 +178,7 @@ Check for violations of CRITICAL rules:
 - `10-8-test-accessibility.md` — automated axe-core testing
 
 ### Testing
-- `10-1-configure-web-test-runner.md` — test runner setup (CRITICAL)
+- `10-1-configure-web-test-runner.md` — Web Test Runner/open-wc or Vitest browser mode with Playwright setup (CRITICAL)
 - `10-2-use-fixture-for-rendering.md` — component instantiation
 - `10-3-await-update-complete.md` — async assertion timing + microtask flush for slotchange
 - `10-4-query-shadow-dom.md` — querying rendered output
@@ -201,6 +210,7 @@ import { createContext, provide, consume } from '@lit/context';
 
 // Testing
 import { fixture, expect, html, oneEvent } from '@open-wc/testing';
+// Or use Vitest browser mode with @vitest/browser-playwright for Chrome/Firefox.
 ```
 
 ### Component Skeleton

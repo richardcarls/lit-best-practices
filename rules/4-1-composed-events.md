@@ -41,3 +41,5 @@ private _handleSelection(item: Item) {
 Use both for most custom events. Without `composed: true`, events won't reach listeners outside the shadow root.
 
 **Exception:** Events that should only be handled internally (within the same shadow root) can omit these flags, but this is rare.
+
+**Interop guidance:** Use component-specific event names such as `wc-select-change` or `wc-dialog-toggle`, and include a detail object with the canonical state (`value`, `selectedValues`, `open`, `returnValue`, etc.). Do not dispatch these events for host-set property updates; those writes are downward data flow.

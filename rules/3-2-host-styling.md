@@ -77,3 +77,5 @@ This approach:
 - Keeps styling on the actual custom element
 - Works with external CSS and attribute selectors
 - Handles hidden, disabled, focus states consistently
+
+**Custom element best practice:** Always give the host a sensible default display value and always restore native hidden behavior with `:host([hidden]) { display: none; }`. Do not overwrite author-owned `class` or `style` attributes from component code.

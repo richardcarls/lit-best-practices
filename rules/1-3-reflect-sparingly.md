@@ -56,3 +56,9 @@ export class DataCard extends LitElement {
   `;
 }
 ```
+
+**Interop guidance:**
+
+- Reflect primitive state only when CSS selectors, SSR snapshots, or HTML authoring need it.
+- Keep object, array, callback, plugin, and controller-like inputs property-only with `attribute: false`.
+- Avoid property/attribute feedback loops: normalize in one direction, compare old/new values, and never dispatch change events from reflected host writes.

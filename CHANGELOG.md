@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-05-13
+
+### Added
+
+**Category 11: Custom Element Interop/API Design (5 rules)**
+
+- `11-1-controlled-default-apis.md` (HIGH) - Standardizes `value`/`defaultValue` and `open`/`defaultOpen` for framework-safe controlled and uncontrolled state.
+- `11-2-silent-host-writes.md` (HIGH) - Treats host-set properties as downward data flow and reserves composed custom events for user/native/internal changes.
+- `11-3-light-dom-progressive-enhancement.md` (HIGH) - Keeps slotted native controls as declarative sources, form fallbacks, and synchronization targets.
+- `11-4-rich-data-properties.md` (HIGH) - Requires object, array, plugin, and callback data to use property-only APIs.
+- `11-5-author-attributes-and-upgrade.md` (HIGH) - Covers pre-upgrade property capture and respecting author-provided global attributes.
+
+### Changed
+
+- `SKILL.md` - Updated to 51 rules across 11 categories and added the new interop/API design index.
+- `README.md` and `AGENTS.md` - Refreshed category summaries, framework interop guidance, and generic `<wc-*>` examples.
+- Existing rules - Incorporated web.dev custom element guidance for primitive reflection, default host display with `:host([hidden])`, composed event payloads, slotted-child ownership, ARIA placement in the accessible flat tree, and author-owned attributes.
+- Testing guidance - Added Vitest browser mode with Playwright as a preferred current option while keeping Web Test Runner/open-wc as an accepted library stack.
+
 ## [1.1.0] - 2026-05-08
 
 ### Added

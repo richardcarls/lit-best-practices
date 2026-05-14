@@ -121,3 +121,5 @@ expect(handler).toHaveBeenCalledOnce();
 // Correct — proves both call count and argument shape
 expect(handler).toHaveBeenCalledOnceWith(expect.objectContaining({ value: 'apple' }));
 ```
+
+**Cross-browser timing coverage:** Add browser tests for property writes before connection, property writes before slot assignment, late slotted child insertion, child replacement, silent host writes, native fallback synchronization, and focus behavior that crosses shadow boundaries. These are the integration cases that jsdom-style tests most often miss.
