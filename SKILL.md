@@ -39,7 +39,7 @@ Reference these guidelines when:
 |----------|-------|-------|
 | 1. Component Structure | 5 rules | Properties, state, TypeScript, slots |
 | 2. Rendering | 6 rules | Templates, directives, derived state |
-| 3. Styling | 4 rules | Static styles, theming, CSS parts |
+| 3. Styling | 6 rules | Static styles, theming, CSS parts, forced-colors safety |
 | 4. Events | 3 rules | Custom events, naming, cleanup |
 | 5. Lifecycle | 6 rules | Callbacks, timing, async, SSR safety |
 | 6. Accessibility | 4 rules | ARIA, focus, forms |
@@ -80,6 +80,8 @@ Reference these guidelines when:
 - `rules/3-2-host-styling.md` - Style the Host Element Properly (HIGH)
 - `rules/3-3-css-custom-properties.md` - CSS Custom Properties for Theming (MEDIUM)
 - `rules/3-4-css-parts.md` - CSS Parts for Deep Styling (MEDIUM)
+- `rules/3-5-css-system-colors.md` - CSS System Colors for Forced Colors Mode (HIGH)
+- `rules/3-6-geometry-inline-styles.md` - Geometry-Only Inline Styles Policy (HIGH)
 
 ### 4. Events
 - `rules/4-1-composed-events.md` - Dispatch Composed Events (CRITICAL)
@@ -140,6 +142,7 @@ Reference these guidelines when:
 - `1-2-separate-state.md` — public vs internal state; Set/Map mutation trap
 - `1-5-slot-composition.md` — distributing light DOM
 - `3-1-static-styles.md` — styling approach
+- `3-5-css-system-colors.md` — accessible color defaults
 - `4-1-composed-events.md` — event configuration
 - `5-5-ssr-safe-construction.md` — avoid browser globals in constructor
 - `5-6-defer-slotchange-mutations.md` — safe slotchange handler pattern
@@ -160,6 +163,7 @@ Check for violations of CRITICAL rules:
 - `2-1-pure-render.md` — side effects in render()
 - `2-6-render-owned-geometry.md` — external geometry writes overwritten by Lit renders
 - `3-1-static-styles.md` — inline styles in templates
+- `3-6-geometry-inline-styles.md` — inline styles used for visual styling
 - `4-1-composed-events.md` — events not composed
 - `5-1-super-call-order.md` — wrong super() order
 - `5-6-defer-slotchange-mutations.md` — synchronous DOM mutations in slotchange handlers
