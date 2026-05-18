@@ -26,6 +26,7 @@
 Check for violations of CRITICAL and HIGH rules:
 
 - `2-1-pure-render.md` - Side effects in render()
+- `2-6-render-owned-geometry.md` - External geometry writes overwritten by Lit renders
 - `3-1-static-styles.md` - Inline styles in templates
 - `4-1-composed-events.md` - Events not composed
 - `5-1-super-call-order.md` - Wrong super() order

@@ -1,13 +1,13 @@
 ---
-title: Use willUpdate for Derived State
+title: Use willUpdate for Derived State and Invariants
 impact: HIGH
-impactDescription: Avoids extra render cycles, computed state ready before render
-tags: lifecycle, state, performance, derived-state
+impactDescription: Avoids extra render cycles, computed state and invariants ready before render
+tags: lifecycle, state, performance, derived-state, invariants
 ---
 
-## Use willUpdate for Derived State
+## Use willUpdate for Derived State and Invariants
 
-Calculate derived state in `willUpdate`, not `updated`.
+Calculate derived state and cross-property invariants in `willUpdate`, not `updated`.
 
 **Incorrect (triggers extra render):**
 
@@ -57,3 +57,26 @@ render() {
 | `updated` | After render | Side effects, DOM operations, events |
 
 Setting `@state()` or `@property()` values in `updated` triggers a new update cycle. Do this only when intentional (rare).
+
+**Cross-property invariants:**
+
+Use `willUpdate(changedProperties)` when multiple reactive values must be reconciled before
+the DOM is rendered. It runs synchronously before every render, including the first render,
+and `changedProperties` contains all initially-set properties on that first call.
+
+```typescript
+willUpdate(changedProperties: PropertyValues<this>) {
+  if (changedProperties.has('value') || changedProperties.has('min') || changedProperties.has('max')) {
+    const [lo, hi] = this.value;
+    const clampedLo = Math.max(this.min, Math.min(lo, hi));
+    const clampedHi = Math.min(this.max, Math.max(hi, clampedLo));
+
+    if (clampedLo !== lo || clampedHi !== hi) {
+      this.value = [clampedLo, clampedHi];
+    }
+  }
+}
+```
+
+This guarantees constraints like `min <= value[0] <= value[1] <= max` before every render,
+with no first-paint flicker and no extra update cycle.

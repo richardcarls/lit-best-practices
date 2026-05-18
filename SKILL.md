@@ -1,7 +1,7 @@
 ---
 name: lit-best-practices
 description: |
-  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 51 rules across 11 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing, custom element interop/API design) ranked by impact.
+  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 52 rules across 11 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing, custom element interop/API design) ranked by impact.
   TRIGGER when: planning or designing Lit web components; generating new Lit component code; updating or extending existing Lit components; reviewing or auditing Lit code for correctness, accessibility, or performance; debugging reactive property or lifecycle issues; writing tests for custom elements.
   SKIP: questions about non-Lit UI frameworks (React, Vue, Angular, Solid) with no Lit code involved; general HTML/CSS questions without web component context.
 license: MIT
@@ -38,7 +38,7 @@ Reference these guidelines when:
 | Category | Rules | Focus |
 |----------|-------|-------|
 | 1. Component Structure | 5 rules | Properties, state, TypeScript, slots |
-| 2. Rendering | 5 rules | Templates, directives, derived state |
+| 2. Rendering | 6 rules | Templates, directives, derived state |
 | 3. Styling | 4 rules | Static styles, theming, CSS parts |
 | 4. Events | 3 rules | Custom events, naming, cleanup |
 | 5. Lifecycle | 6 rules | Callbacks, timing, async, SSR safety |
@@ -73,6 +73,7 @@ Reference these guidelines when:
 - `rules/2-3-use-repeat.md` - Use repeat() for Keyed Lists (HIGH)
 - `rules/2-4-use-cache.md` - Use cache() for Conditional Subtrees (MEDIUM)
 - `rules/2-5-derived-state.md` - Compute Derived State in willUpdate() (HIGH)
+- `rules/2-6-render-owned-geometry.md` - Let render() Own Template Geometry (HIGH)
 
 ### 3. Styling
 - `rules/3-1-static-styles.md` - Always Use Static Styles (CRITICAL)
@@ -88,7 +89,7 @@ Reference these guidelines when:
 ### 5. Lifecycle
 - `rules/5-1-super-call-order.md` - Correct super() Call Order (CRITICAL)
 - `rules/5-2-first-updated.md` - Use firstUpdated for DOM Operations (HIGH)
-- `rules/5-3-will-update.md` - Use willUpdate for Derived State (HIGH)
+- `rules/5-3-will-update.md` - Use willUpdate for Derived State and Invariants (HIGH)
 - `rules/5-4-update-complete.md` - Async Operations with updateComplete (MEDIUM)
 - `rules/5-5-ssr-safe-construction.md` - SSR-Safe Construction (MEDIUM)
 - `rules/5-6-defer-slotchange-mutations.md` - Defer DOM Mutations in Slotchange Handlers (CRITICAL)
@@ -157,6 +158,7 @@ Reference these guidelines when:
 ### Code Review
 Check for violations of CRITICAL rules:
 - `2-1-pure-render.md` — side effects in render()
+- `2-6-render-owned-geometry.md` — external geometry writes overwritten by Lit renders
 - `3-1-static-styles.md` — inline styles in templates
 - `4-1-composed-events.md` — events not composed
 - `5-1-super-call-order.md` — wrong super() order

@@ -4,12 +4,12 @@ A reusable AI agent skill containing comprehensive best practices for building L
 
 ## Overview
 
-This skill contains 51 rules across 11 categories, prioritized by impact to guide automated refactoring and code generation:
+This skill contains 52 rules across 11 categories, prioritized by impact to guide automated refactoring and code generation:
 
 | Category | Rules | Focus |
 | --- | --- | --- |
 | Component Structure | 5 | Properties, state, TypeScript patterns, slots |
-| Rendering | 5 | Templates, directives, performance |
+| Rendering | 6 | Templates, directives, performance |
 | Styling | 4 | Static styles, theming, CSS parts |
 | Events | 3 | Custom events, naming, cleanup |
 | Lifecycle | 6 | Callbacks, timing, async patterns, SSR safety |
