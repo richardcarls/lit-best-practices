@@ -1,7 +1,7 @@
 ---
 name: lit-best-practices
 description: |
-  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 52 rules across 11 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing, custom element interop/API design) ranked by impact.
+  Lit web components best practices for AI-assisted code generation, code review, refactoring, and debugging. Use when working in any Lit project — planning or designing components, generating new component code, updating or extending existing components, auditing for accessibility or performance, integrating async data, sharing state across components, or writing tests. 55 rules across 11 categories (component structure, rendering, styling, events, lifecycle, accessibility, performance, reactive controllers, context API, testing, custom element interop/API design) ranked by impact.
   TRIGGER when: planning or designing Lit web components; generating new Lit component code; updating or extending existing Lit components; reviewing or auditing Lit code for correctness, accessibility, or performance; debugging reactive property or lifecycle issues; writing tests for custom elements.
   SKIP: questions about non-Lit UI frameworks (React, Vue, Angular, Solid) with no Lit code involved; general HTML/CSS questions without web component context.
 license: MIT
@@ -39,15 +39,15 @@ Reference these guidelines when:
 |----------|-------|-------|
 | 1. Component Structure | 5 rules | Properties, state, TypeScript, slots |
 | 2. Rendering | 6 rules | Templates, directives, derived state |
-| 3. Styling | 6 rules | Static styles, theming, CSS parts, forced-colors safety |
+| 3. Styling | 7 rules | Static styles, theming, CSS parts, forced-colors safety |
 | 4. Events | 3 rules | Custom events, naming, cleanup |
 | 5. Lifecycle | 6 rules | Callbacks, timing, async, SSR safety |
 | 6. Accessibility | 4 rules | ARIA, focus, forms |
 | 7. Performance | 4 rules | Updates, caching, lazy loading |
 | 8. Reactive Controllers | 4 rules | Reusable behaviors, async tasks, observers |
 | 9. Context API | 3 rules | Cross-component state, provider scope |
-| 10. Testing | 8 rules | Setup, rendering, assertions, events, a11y |
-| 11. Custom Element Interop/API Design | 5 rules | Controlled/default APIs, events, light DOM, rich data |
+| 10. Testing | 9 rules | Setup, rendering, assertions, events, a11y |
+| 11. Custom Element Interop/API Design | 6 rules | Controlled/default APIs, events, light DOM, rich data |
 
 ## Priority Levels
 
@@ -83,6 +83,7 @@ Reference these guidelines when:
 - `rules/3-5-css-system-colors.md` - CSS System Colors for Forced Colors Mode (HIGH)
 - `rules/3-6-geometry-inline-styles.md` - Geometry-Only Inline Styles Policy (HIGH)
 
+- `rules/3-8-container-type-host-sizing.md` - Container Queries Change Host Sizing (HIGH)
 ### 4. Events
 - `rules/4-1-composed-events.md` - Dispatch Composed Events (CRITICAL)
 - `rules/4-2-event-naming.md` - Event Naming Conventions (MEDIUM)
@@ -129,6 +130,7 @@ Reference these guidelines when:
 - `rules/10-7-test-controllers-in-isolation.md` - Test Reactive Controllers Without a Host Element (MEDIUM)
 - `rules/10-8-test-accessibility.md` - Test Accessibility with axe-core (MEDIUM)
 
+- `rules/10-9-dispatch-events-for-directive-listeners.md` - Dispatch Events for Directive Listeners in WebDriver Tests (HIGH)
 ### 11. Custom Element Interop/API Design
 - `rules/11-1-controlled-default-apis.md` - Controlled and Default APIs (HIGH)
 - `rules/11-2-silent-host-writes.md` - Silent Host Writes (HIGH)
@@ -136,6 +138,7 @@ Reference these guidelines when:
 - `rules/11-4-rich-data-properties.md` - Rich Data Properties (HIGH)
 - `rules/11-5-author-attributes-and-upgrade.md` - Author Attributes and Upgrade Safety (HIGH)
 ## Task-Based Rule Selection
+- `rules/11-6-reflect-custom-accessors-host-intent.md` - Preserve Host Intent with Reflected Custom Accessors (HIGH)
 
 ### Writing New Components
 - `1-1-use-decorators.md` — property declarations + tsconfig `useDefineForClassFields: false`
