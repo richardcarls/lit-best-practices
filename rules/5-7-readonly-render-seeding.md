@@ -23,7 +23,7 @@ For editable elements that accept a slotted `<textarea>`, `slotchange` fires **a
 `_document` now available.
 
 For **read-only** elements with no slotted child, `slotchange` either never fires or
-returns early — and the element stays empty even though all properties were set correctly.
+returns early; and the element stays empty even though all properties were set correctly.
 
 **Fix:** Call `_scheduleRender()` at the end of `firstUpdated()`, after all internal setup
 is complete:

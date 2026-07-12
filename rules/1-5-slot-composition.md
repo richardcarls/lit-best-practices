@@ -7,7 +7,8 @@ tags: slots, composition, light-dom, slotchange, assignedElements
 
 ## Slot Composition Patterns
 
-Slotted content is distributed light DOM — it belongs to the parent document, not the component. Read it through the slot API; never query or iterate `this.children` directly.
+Slotted content is distributed light DOM; it belongs to the parent document, not the component. Read
+it through the slot API; never query or iterate `this.children` directly.
 
 **Incorrect:**
 
@@ -57,7 +58,7 @@ export class ItemList extends LitElement {
 **Slot API methods:**
 
 | Method | Returns | Use when |
-|--------|---------|----------|
+| -------- | --------- | ---------- |
 | `slot.assignedNodes()` | Text nodes + elements | Need raw DOM nodes |
 | `slot.assignedElements()` | Elements only | Need element references (most common) |
 | `slot.assignedElements({ flatten: true })` | Elements including re-slotted content | Nested slot composition |
@@ -92,4 +93,4 @@ static styles = css`
 `;
 ```
 
-Note: `::slotted()` only matches direct slotted children — it cannot pierce nested shadow roots.
+Note: `::slotted()` only matches direct slotted children; it cannot pierce nested shadow roots.

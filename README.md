@@ -1,10 +1,12 @@
 # Lit Web Components Best Practices
 
-A reusable AI agent skill containing comprehensive best practices for building Lit web components, optimized for code generation, review, and refactoring.
+A reusable AI agent skill containing comprehensive best practices for building Lit web components,
+optimized for code generation, review, and refactoring.
 
 ## Overview
 
-This skill contains 52 rules across 11 categories, prioritized by impact to guide automated refactoring and code generation:
+This skill contains 52 rules across 11 categories, prioritized by impact to guide automated
+refactoring and code generation:
 
 | Category | Rules | Focus |
 | --- | --- | --- |
@@ -40,11 +42,13 @@ lit-best-practices/
     └── ...
 ```
 
-The rules are split into individual files so agents can load only the rules relevant to the current task.
+The rules are split into individual files so agents can load only the rules relevant to the current
+task.
 
 ## Usage
 
-The skill activates for tasks involving Lit web components, custom elements, shadow DOM, reactive properties, framework interop, or web component testing.
+The skill activates for tasks involving Lit web components, custom elements, shadow DOM, reactive
+properties, framework interop, or web component testing.
 
 ## Key Patterns Covered
 
@@ -92,7 +96,8 @@ The skill activates for tasks involving Lit web components, custom elements, sha
 - Web Test Runner/open-wc as an accepted library testing stack
 - `fixture()` for connected, rendered component instantiation
 - Awaiting `updateComplete` and slot microtasks before assertions
-- Cross-browser timing tests for property-before-connect, slot replacement, silent host writes, and native fallback sync
+- Cross-browser timing tests for property-before-connect, slot replacement, silent host writes, and
+  native fallback sync
 
 ## Reference Resources
 

@@ -7,7 +7,8 @@ tags: ssr, constructor, lifecycle, document, window, lit-labs-ssr
 
 ## SSR-Safe Construction
 
-The constructor runs in every environment — including Node.js during server-side rendering with `@lit-labs/ssr`. `document`, `window`, `navigator`, and other browser globals do not exist there.
+The constructor runs in every environment; including Node.js during server-side rendering with
+`@lit-labs/ssr`. `document`, `window`, `navigator`, and other browser globals do not exist there.
 
 **Incorrect:**
 
@@ -60,8 +61,8 @@ export class MyWidget extends LitElement {
 
 **When to use each lifecycle callback:**
 
-| Callback | Browser APIs safe? | Shadow DOM ready? | Use for |
-|----------|--------------------|-------------------|---------|
+| Callback | Browser APIs safe? | shadow DOM ready? | Use for |
+| ---------- | -------------------- | ------------------- | --------- |
 | `constructor` | No | No | Initialize primitive properties only |
 | `connectedCallback` | Yes | No | Media queries, document listeners, non-DOM setup |
 | `firstUpdated` | Yes | Yes | DOM observers, focus, measurements |
@@ -78,4 +79,5 @@ constructor() {
 }
 ```
 
-Avoid any call that transitively reaches `document`, `window`, `localStorage`, `navigator`, or `HTMLElement` APIs in the constructor.
+Avoid any call that transitively reaches `document`, `window`, `localStorage`, `navigator`, or
+`HTMLElement` APIs in the constructor.

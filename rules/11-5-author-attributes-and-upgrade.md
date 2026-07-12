@@ -8,7 +8,8 @@ category: Custom Element Interop/API Design
 
 ## Rule
 
-Handle properties that authors or frameworks set before custom-element upgrade, and avoid overriding author-provided global attributes such as `role`, `tabindex`, `aria-*`, `class`, and `style`.
+Handle properties that authors or frameworks set before custom-element upgrade, and avoid overriding
+author-provided global attributes such as `role`, `tabindex`, `aria-*`, `class`, and `style`.
 
 ## Incorrect
 
@@ -48,7 +49,9 @@ private _capturePreUpgradeProperty(name: 'value') {
 
 ## Why It Matters
 
-Frameworks often assign properties before the element class has upgraded. Custom elements must preserve those values instead of replacing them with class defaults. Authors also need final control over global attributes that affect styling, semantics, and focus behavior.
+Frameworks often assign properties before the element class has upgraded. Custom elements must
+preserve those values instead of replacing them with class defaults. Authors also need final control
+over global attributes that affect styling, semantics, and focus behavior.
 
 ## Related Rules
 

@@ -7,7 +7,8 @@ tags: context, shared-state, dependency-injection, lit-context, provider, consum
 
 ## Use @lit/context for Cross-Component State
 
-`@lit/context` implements the context protocol for Lit — a type-safe, event-based mechanism for sharing state down a component tree without threading props through every intermediate layer.
+`@lit/context` implements the context protocol for Lit; a type-safe, event-based mechanism for
+sharing state down a component tree without threading props through every intermediate layer.
 
 **Incorrect:**
 
@@ -100,4 +101,5 @@ export class ThemeIcon extends LitElement {
 npm install @lit/context
 ```
 
-Contexts are identified by the object reference passed to `createContext`, not by string equality — always import the context object from a shared module rather than recreating it.
+Contexts are identified by the object reference passed to `createContext`, not by string equality;
+always import the context object from a shared module rather than recreating it.

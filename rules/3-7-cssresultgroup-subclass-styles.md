@@ -48,7 +48,7 @@ any subclass to pass either a single result or an array without a type violation
 
 ## Notes
 
-- The annotation must be on the **parent** — TypeScript's override check compares against the
+- The annotation must be on the **parent**; TypeScript's override check compares against the
   parent's declared type, so annotating only the child is insufficient.
 - Safe to add: Lit's internal style handling accepts `CSSResultGroup` in all supported versions.
 - Applies whenever you subclass any Lit component and need to add or replace styles.

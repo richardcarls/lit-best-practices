@@ -10,11 +10,13 @@ tags: attributes, css, serialization, reflection
 Only reflect properties when necessary for CSS selectors or HTML serialization.
 
 **When to reflect:**
+
 - Boolean states used in CSS (`:host([disabled])`, `:host([open])`)
 - Enumerated variants (`variant="primary"`)
 - Properties that should persist in HTML snapshots
 
 **When NOT to reflect:**
+
 - Complex types (Objects, Arrays) - these cannot be serialized
 - Frequently changing values - causes DOM attribute churn
 - Internal state - no external styling need
@@ -61,4 +63,5 @@ export class DataCard extends LitElement {
 
 - Reflect primitive state only when CSS selectors, SSR snapshots, or HTML authoring need it.
 - Keep object, array, callback, plugin, and controller-like inputs property-only with `attribute: false`.
-- Avoid property/attribute feedback loops: normalize in one direction, compare old/new values, and never dispatch change events from reflected host writes.
+- Avoid property/attribute feedback loops: normalize in one direction, compare old/new values, and
+  never dispatch change events from reflected host writes.

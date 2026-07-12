@@ -101,6 +101,7 @@ export class MarkdownPreview extends LitElement {
 ```
 
 **Benefits:**
+
 - Initial bundle stays small
 - Heavy code loads on-demand
 - Better caching (heavy modules cached separately)

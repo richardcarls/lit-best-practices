@@ -7,7 +7,9 @@ tags: reactive-controllers, ResizeObserver, IntersectionObserver, MutationObserv
 
 ## Wrap DOM Observers in Reactive Controllers
 
-`ResizeObserver`, `IntersectionObserver`, and `MutationObserver` all require explicit teardown. Wrapping them in reactive controllers ties that teardown to the element's lifecycle automatically and makes the observer reusable across components.
+`ResizeObserver`, `IntersectionObserver`, and `MutationObserver` all require explicit teardown.
+Wrapping them in reactive controllers ties that teardown to the element's lifecycle automatically
+and makes the observer reusable across components.
 
 **Incorrect:**
 
@@ -87,7 +89,7 @@ export class LazyImage extends LitElement {
 **Observer teardown cheat sheet:**
 
 | Observer | Teardown method | Common mistake |
-|----------|----------------|----------------|
+| ---------- | ---------------- | ---------------- |
 | `ResizeObserver` | `observer.disconnect()` | Forgetting on `disconnectedCallback` |
 | `IntersectionObserver` | `observer.disconnect()` | Not disconnecting one-shot observers after trigger |
 | `MutationObserver` | `observer.disconnect()` | Missing cleanup on conditional observers |

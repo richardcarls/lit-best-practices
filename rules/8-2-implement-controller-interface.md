@@ -7,7 +7,9 @@ tags: reactive-controllers, ReactiveController, lifecycle, addController
 
 ## Implement the ReactiveController Interface Correctly
 
-A controller that never calls `host.addController(this)` will not participate in the host's lifecycle — `hostConnected` and `hostDisconnected` are never called, subscriptions are never set up, and state never triggers re-renders.
+A controller that never calls `host.addController(this)` will not participate in the host's
+lifecycle; `hostConnected` and `hostDisconnected` are never called, subscriptions are never set up,
+and state never triggers re-renders.
 
 **Incorrect:**
 
@@ -77,12 +79,12 @@ interface ReactiveController {
 }
 ```
 
-All methods are optional — implement only what the controller needs.
+All methods are optional; implement only what the controller needs.
 
 **Lifecycle hook use cases:**
 
 | Hook | Use for |
-|------|---------|
+| ------ | --------- |
 | `hostConnected` | Start subscriptions, observers, timers |
 | `hostDisconnected` | Clean up all resources |
 | `hostUpdate` | Read host properties before render |

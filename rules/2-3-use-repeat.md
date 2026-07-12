@@ -42,6 +42,7 @@ render() {
 ```
 
 The `repeat()` directive:
+
 - Maintains DOM node identity during reorders
 - Minimizes DOM operations for insertions/deletions
 - Preserves component state in list items

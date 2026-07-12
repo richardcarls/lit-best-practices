@@ -63,6 +63,7 @@ export class MyCard extends LitElement {
 ```
 
 Static styles are:
+
 - Parsed once and shared across all instances
 - Adopted via `adoptedStyleSheets` for better performance
 - Properly typed in TypeScript

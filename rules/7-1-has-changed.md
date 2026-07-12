@@ -9,7 +9,8 @@ tags: performance, updates, optimization, hasChanged
 
 Implement `hasChanged` for properties where default comparison is insufficient.
 
-**Problem:** Lit uses strict equality (`===`) by default. New object/array references trigger updates even when data is equivalent.
+**Problem:** Lit uses strict equality (`===`) by default. New object/array references trigger
+updates even when data is equivalent.
 
 **Incorrect:**
 

@@ -126,6 +126,7 @@ export class MySwitch extends LitElement {
 ```
 
 **ARIA checklist for interactive components:**
+
 - [ ] Appropriate `role` attribute
 - [ ] `tabindex` for keyboard focus (0 for focusable, -1 when disabled)
 - [ ] `aria-*` state attributes reflecting current state
@@ -133,4 +134,8 @@ export class MySwitch extends LitElement {
 - [ ] Keyboard handlers for Space, Enter, Arrow keys as appropriate
 - [ ] Visual focus indicator
 
-**Slotted content guidance:** Put ARIA semantics where the accessible flat tree can see the interactive content. If the host wraps slotted controls, synchronize relationships such as `aria-controls` and `aria-labelledby` without hiding consumer-provided labels. Do not stomp author-provided `role`, `tabindex`, or `aria-*` attributes; set defaults only when the author has not supplied one.
+**Slotted content guidance:** Put ARIA semantics where the accessible flat tree can see the
+interactive content. If the host wraps slotted controls, synchronize relationships such as
+`aria-controls` and `aria-labelledby` without hiding consumer-provided labels. Do not stomp
+author-provided `role`, `tabindex`, or `aria-*` attributes; set defaults only when the author has
+not supplied one.

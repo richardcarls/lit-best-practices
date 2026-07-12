@@ -1,6 +1,7 @@
 # Lit Web Components Best Practices - Agent Guide
 
-> **Note:** This document provides high-level guidance for AI agents working with Lit components. Detailed rules with code examples are in the `rules/` directory.
+> **Note:** This document provides high-level guidance for AI agents working with Lit components.
+  Detailed rules with code examples are in the `rules/` directory.
 
 ## How to Use This Skill
 
@@ -119,4 +120,5 @@ lit-best-practices/
 
 ## Rule File Format
 
-Each rule file contains frontmatter, a problem statement, incorrect/correct examples, why-it-matters guidance, and related-rule links when useful.
+Each rule file contains frontmatter, a problem statement, incorrect/correct examples, why-it-matters
+guidance, and related-rule links when useful.

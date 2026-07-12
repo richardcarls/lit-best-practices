@@ -1,13 +1,14 @@
 ---
-title: Query Shadow DOM Elements Correctly in Tests
+title: Query shadow DOM Elements Correctly in Tests
 impact: HIGH
 impactDescription: Querying the element directly instead of its shadowRoot always returns null for shadow DOM content
 tags: testing, shadow-dom, querySelector, shadowRoot, queries
 ---
 
-## Query Shadow DOM Elements Correctly in Tests
+## Query shadow DOM Elements Correctly in Tests
 
-Shadow DOM content is not accessible via the host element's `querySelector`. It lives inside `shadowRoot` — a separate DOM tree. Every shadow DOM query in tests must go through `el.shadowRoot`.
+shadow DOM content is not accessible via the host element's `querySelector`. It lives inside
+`shadowRoot`; a separate DOM tree. Every shadow DOM query in tests must go through `el.shadowRoot`.
 
 **Incorrect:**
 
@@ -72,12 +73,13 @@ const link = nav.shadowRoot!.querySelector('a[href="/home"]');
 expect(link).to.exist;
 ```
 
-**Light DOM vs Shadow DOM:**
+**light DOM vs shadow DOM:**
 
 | Target | Use |
-|--------|-----|
-| Shadow DOM content (rendered template) | `el.shadowRoot!.querySelector(...)` |
+| -------- | ----- |
+| shadow DOM content (rendered template) | `el.shadowRoot!.querySelector(...)` |
 | Slotted light DOM content | `el.querySelector(...)` or slot API |
 | Attributes on the host element itself | `el.getAttribute(...)` / `el.hasAttribute(...)` |
 
-**Note:** `@open-wc/testing`'s `expect(el).shadowDom.to.equalSnapshot()` inspects shadow DOM automatically — use it for snapshot testing instead of manual queries.
+**Note:** `@open-wc/testing`'s `expect(el).shadowDom.to.equalSnapshot()` inspects shadow DOM
+automatically; use it for snapshot testing instead of manual queries.

@@ -40,13 +40,16 @@ export class MyDropdown extends LitElement {
 ```
 
 This pattern:
+
 - Makes the component's public API clear
 - Prevents external code from depending on internal state
 - Reduces attribute handling overhead for internal state
 
-**`@state()` equality trap — Set and Map mutations:**
+**`@state()` equality trap; Set and Map mutations:**
 
-Lit uses `Object.is()` to compare old and new values before deciding whether to re-render. Mutating a `Set` or `Map` in place (`.add()`, `.delete()`, `.set()`) does not change the reference — `Object.is(prev, next)` returns `true`, and Lit skips the render.
+Lit uses `Object.is()` to compare old and new values before deciding whether to re-render. Mutating
+a `Set` or `Map` in place (`.add()`, `.delete()`, `.set()`) does not change the reference;
+`Object.is(prev, next)` returns `true`, and Lit skips the render.
 
 ```typescript
 // Incorrect — mutation does not trigger re-render
@@ -74,4 +77,5 @@ toggle(id: string) {
 }
 ```
 
-The same applies to `Map`, arrays mutated via `.push()`/`.splice()`, and plain objects mutated via property assignment. Always replace the reference rather than mutating in place.
+The same applies to `Map`, arrays mutated via `.push()`/`.splice()`, and plain objects mutated via
+property assignment. Always replace the reference rather than mutating in place.

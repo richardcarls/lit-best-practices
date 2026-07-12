@@ -7,7 +7,9 @@ tags: context, provider, architecture, scope, coupling
 
 ## Scope Context Providers at the Right Level
 
-A context provider should live at the **lowest common ancestor** that spans all its consumers. Placing every provider at the document root makes state globally mutable from anywhere, makes testing harder, and means every test must set up the entire application context.
+A context provider should live at the **lowest common ancestor** that spans all its consumers.
+Placing every provider at the document root makes state globally mutable from anywhere, makes
+testing harder, and means every test must set up the entire application context.
 
 **Incorrect:**
 
@@ -65,15 +67,16 @@ export class EditorPage extends LitElement {
 **Provider scope decision:**
 
 | State used in… | Provider should live at… |
-|----------------|--------------------------|
+| ---------------- | -------------------------- |
 | Every page / global UI | App root |
 | One route or feature | That route's root component |
 | A single compound widget | The widget's container element |
-| One component only | `@state()` — no context needed |
+| One component only | `@state()`; no context needed |
 
 **Testing benefit of tight scoping:**
 
-Feature-scoped providers let you test a feature in isolation by rendering just its root element rather than a full application shell:
+Feature-scoped providers let you test a feature in isolation by rendering just its root element
+rather than a full application shell:
 
 ```typescript
 const el = await fixture(html`<checkout-page></checkout-page>`);

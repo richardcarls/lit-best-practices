@@ -82,7 +82,7 @@ export class FilteredList extends LitElement {
 }
 ```
 
-**Alternative: Use willUpdate for simpler cases**
+### Alternative: Use willUpdate for simpler cases
 
 ```typescript
 @state() private _processedItems: Item[] = [];
@@ -102,7 +102,7 @@ willUpdate(changedProperties: PropertyValues) {
 **When to use which approach:**
 
 | Approach | Use when |
-|----------|----------|
+| ---------- | ---------- |
 | `willUpdate` | Dependencies are all reactive properties |
 | Memoized getter | Multiple access points, complex cache keys |
 | External memoize util | Shared across components, complex logic |

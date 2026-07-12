@@ -7,7 +7,9 @@ tags: testing, accessibility, axe-core, aria, open-wc, a11y
 
 ## Test Accessibility with axe-core
 
-`@open-wc/testing` bundles axe-core via the `expect(el).to.be.accessible()` assertion. Running it on every interactive component catches missing ARIA attributes, incorrect roles, focus management issues, and color contrast problems automatically.
+`@open-wc/testing` bundles axe-core via the `expect(el).to.be.accessible()` assertion. Running it on
+every interactive component catches missing ARIA attributes, incorrect roles, focus management
+issues, and color contrast problems automatically.
 
 **Incorrect:**
 
@@ -74,7 +76,7 @@ await expect(el).to.be.accessible({
 **What axe-core checks automatically:**
 
 | Category | Examples |
-|----------|---------|
+| ---------- | --------- |
 | ARIA | Missing required attributes, invalid values, role conflicts |
 | Focus | Interactive elements with `tabindex="-1"`, missing focus management |
 | Images | Missing `alt` attributes |
@@ -84,4 +86,6 @@ await expect(el).to.be.accessible({
 
 **Test states that change ARIA:**
 
-Interactive components should be tested in every meaningful state — default, checked/selected, disabled, error — because ARIA attributes differ per state and violations may only appear in specific combinations.
+Interactive components should be tested in every meaningful state (default, checked/selected,
+disabled, error) because ARIA attributes differ per state and violations may only appear in specific
+combinations.

@@ -8,7 +8,9 @@ category: Custom Element Interop/API Design
 
 ## Rule
 
-Do not dispatch change or toggle events when the host application sets public properties. Dispatch composed, bubbling events only for user, native, or internal component actions that change state upward.
+Do not dispatch change or toggle events when the host application sets public properties. Dispatch
+composed, bubbling events only for user, native, or internal component actions that change state
+upward.
 
 ## Incorrect
 
@@ -47,7 +49,9 @@ private _commitUserValue(next: string | string[]) {
 
 ## Why It Matters
 
-Property writes are downward data flow. Emitting events from host writes creates feedback loops in Solid, React, Vue, and form libraries. User-originated events should be the single state-up channel and should carry enough detail that wrappers do not need to read internal element state.
+Property writes are downward data flow. Emitting events from host writes creates feedback loops in
+Solid, React, Vue, and form libraries. User-originated events should be the single state-up channel
+and should carry enough detail that wrappers do not need to read internal element state.
 
 ## Related Rules
 

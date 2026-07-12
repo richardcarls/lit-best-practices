@@ -53,9 +53,13 @@ export class MyComponent extends LitElement {
 
 Decorators provide clearer intent, better TypeScript integration, and easier maintenance.
 
-**Required tsconfig setting — `useDefineForClassFields: false`:**
+**Required tsconfig setting; `useDefineForClassFields: false`:**
 
-When using `experimentalDecorators: true`, you must also set `useDefineForClassFields: false`. Without it, TypeScript (when `target >= ES2022`) uses `Object.defineProperty` for class field initializers, which creates **own data properties** that shadow the prototype getter/setters that Lit's `@property()` and `@state()` decorators install. The component appears to work — property values are stored — but `requestUpdate()` is never called, so the component never re-renders.
+When using `experimentalDecorators: true`, you must also set `useDefineForClassFields: false`.
+Without it, TypeScript (when `target >= ES2022`) uses `Object.defineProperty` for class field
+initializers, which creates **own data properties** that shadow the prototype getter/setters that
+Lit's `@property()` and `@state()` decorators install. The component appears to work; property
+values are stored; but `requestUpdate()` is never called, so the component never re-renders.
 
 ```jsonc
 // tsconfig.json
@@ -67,4 +71,5 @@ When using `experimentalDecorators: true`, you must also set `useDefineForClassF
 }
 ```
 
-This is the most common silent failure when migrating a project to a newer `target` setting or when upgrading TypeScript.
+This is the most common silent failure when migrating a project to a newer `target` setting or when
+upgrading TypeScript.

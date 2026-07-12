@@ -8,7 +8,8 @@ category: Custom Element Interop/API Design
 
 ## Rule
 
-Expose object, array, callback, plugin, and controller-style configuration as properties only. Reflect only primitive state to attributes when it is useful for CSS, SSR, or HTML authoring.
+Expose object, array, callback, plugin, and controller-style configuration as properties only.
+Reflect only primitive state to attributes when it is useful for CSS, SSR, or HTML authoring.
 
 ## Incorrect
 
@@ -36,14 +37,16 @@ Expose object, array, callback, plugin, and controller-style configuration as pr
 
 ## Why It Matters
 
-Attributes are strings. Reflecting rich data produces lossy serialization, reentrancy hazards, and fragile framework behavior. Property-only rich APIs let React, Solid, Vue, and plain JavaScript pass live objects while simple attributes remain available for primitive state.
+Attributes are strings. Reflecting rich data produces lossy serialization, reentrancy hazards, and
+fragile framework behavior. Property-only rich APIs let React, Solid, Vue, and plain JavaScript pass
+live objects while simple attributes remain available for primitive state.
 
 ## requestUpdate() for Array/Object Properties
 
 Call `requestUpdate()` (no args) rather than `requestUpdate('propertyName', oldValue)` for
 array and object properties. With named-property dirty checking, Lit compares old vs. new by
 `===`. If a consumer passes a freshly allocated array each render (common in Solid memos and
-React), the references differ and rendering always happens correctly — but if the consumer
+React), the references differ and rendering always happens correctly; but if the consumer
 mutates the existing array in-place, Lit skips the render because same reference = no change.
 No-arg `requestUpdate()` bypasses dirty checking entirely and is always safe for external state:
 

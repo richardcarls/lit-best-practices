@@ -7,7 +7,9 @@ tags: async, task, reactive-controllers, data-fetching, loading-state
 
 ## Use @lit/task for Async Data Fetching
 
-The `Task` reactive controller from `@lit/task` manages the full async lifecycle — pending, complete, and error states — as a single reactive unit. Manual `@state` flags for loading and error scatter state and miss edge cases like race conditions.
+The `Task` reactive controller from `@lit/task` manages the full async lifecycle (pending, complete,
+and error states) as a single reactive unit. Manual `@state` flags for loading and error scatter
+state and miss edge cases like race conditions.
 
 **Incorrect:**
 
@@ -87,7 +89,9 @@ this._userTask.error    // Error when ERROR, undefined otherwise
 
 **Abort signal:**
 
-The `signal` parameter in the task function is an `AbortSignal` tied to the task lifecycle. Pass it to `fetch` so in-flight requests are cancelled when arguments change or the element disconnects — preventing stale state from landing after a faster re-run completes.
+The `signal` parameter in the task function is an `AbortSignal` tied to the task lifecycle. Pass it
+to `fetch` so in-flight requests are canceled when arguments change or the element disconnects;
+preventing stale state from landing after a faster re-run completes.
 
 **Installation:**
 

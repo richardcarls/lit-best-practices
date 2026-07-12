@@ -38,6 +38,7 @@ export class UserCard extends LitElement {
 ```
 
 This ensures:
+
 - No undefined values in templates
 - TypeScript strict mode compatibility
 - Predictable component initialization

@@ -7,7 +7,8 @@ tags: reactive-controllers, reusability, lifecycle, composition
 
 ## Use Reactive Controllers for Reusable Behaviors
 
-Reactive controllers encapsulate stateful logic that participates in a host element's update lifecycle. Extract behaviors that would otherwise be duplicated across components into controllers.
+Reactive controllers encapsulate stateful logic that participates in a host element's update
+lifecycle. Extract behaviors that would otherwise be duplicated across components into controllers.
 
 **Incorrect:**
 
@@ -90,7 +91,7 @@ export class CardLayout extends LitElement {
 **When to extract a controller:**
 
 | Signal | Recommendation |
-|--------|----------------|
+| -------- | ---------------- |
 | Same `connectedCallback` / `disconnectedCallback` code in 2+ components | Extract to controller |
 | Logic that holds its own state and updates the host | Extract to controller |
 | Browser API that needs explicit teardown | Extract to controller |

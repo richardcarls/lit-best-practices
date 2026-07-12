@@ -10,6 +10,7 @@ tags: lifecycle, initialization, correctness, super
 Call `super` at the right time in lifecycle methods.
 
 **Pattern:**
+
 - `connectedCallback`: `super` first, then your code
 - `disconnectedCallback`: your code first, then `super`
 - Other lifecycle methods: `super` first (if overriding)
@@ -62,5 +63,6 @@ willUpdate(changedProperties: PropertyValues) {
 ```
 
 **Why this matters:**
+
 - `connectedCallback`: Lit needs to set up rendering before your code runs
 - `disconnectedCallback`: Your cleanup may depend on Lit state that gets cleared in `super`

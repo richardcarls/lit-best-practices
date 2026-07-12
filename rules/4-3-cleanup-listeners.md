@@ -69,6 +69,7 @@ export class ResizeAware extends LitElement {
 ```
 
 **Key patterns:**
+
 - Arrow functions for simple handlers (auto-bind `this`)
 - Store bound references for methods that need removal
 - Clean up observers, subscriptions, and timers too

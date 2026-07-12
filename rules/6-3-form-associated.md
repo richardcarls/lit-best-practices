@@ -103,6 +103,7 @@ export class CustomInput extends LitElement {
 ```
 
 **Form association provides:**
+
 - Automatic form submission with `name` and `value`
 - Native constraint validation (`:valid`, `:invalid` CSS)
 - Form reset handling

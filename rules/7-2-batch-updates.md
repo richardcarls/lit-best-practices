@@ -53,7 +53,8 @@ async loadData() {
 }
 ```
 
-**Why this works:** Lit batches property changes within the same microtask into a single update cycle. `Object.assign` sets all properties synchronously, so they're batched automatically.
+**Why this works:** Lit batches property changes within the same microtask into a single update
+cycle. `Object.assign` sets all properties synchronously, so they're batched automatically.
 
 **Alternative with explicit batching:**
 
@@ -73,4 +74,5 @@ async loadData() {
 }
 ```
 
-**Note:** Updates only trigger multiple renders when separated by `await` or put in different event loop tasks (e.g., `setTimeout`).
+**Note:** Updates only trigger multiple renders when separated by `await` or put in different event
+loop tasks (for example, `setTimeout`).

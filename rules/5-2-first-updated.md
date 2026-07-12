@@ -52,10 +52,11 @@ private _measureHeight() {
 ```
 
 **Timeline:**
+
 1. `connectedCallback` - Element added to DOM, but shadow DOM not rendered
-2. `willUpdate` - About to render, can compute derived state
-3. `render()` - Returns template
-4. `firstUpdated` - First render complete, DOM available ✓
-5. `updated` - After each render
+1. `willUpdate` - About to render, can compute derived state
+1. `render()` - Returns template
+1. `firstUpdated` - First render complete, DOM available ✓
+1. `updated` - After each render
 
 Use the `@query` decorator for type-safe element references instead of manual `querySelector`.

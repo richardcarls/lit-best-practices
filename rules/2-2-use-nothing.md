@@ -40,6 +40,7 @@ render() {
 ```
 
 Using `nothing`:
+
 - Produces cleaner DOM output (no empty text nodes)
 - Communicates intent clearly
 - Is the idiomatic Lit pattern

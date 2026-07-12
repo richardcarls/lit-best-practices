@@ -10,6 +10,7 @@ tags: events, naming, api-design, conventions
 Follow consistent naming patterns for custom events.
 
 **Conventions:**
+
 - All lowercase with hyphens: `item-selected`, not `itemSelected`
 - Past tense for state changes: `value-changed`, `item-removed`
 - Present tense for actions: `click`, `input`, `submit`

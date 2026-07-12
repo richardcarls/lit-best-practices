@@ -7,7 +7,8 @@ tags: testing, slots, slotted-content, assignedElements, light-dom
 
 ## Test Slot Content Rendering
 
-Slotted content lives in the light DOM (on the host), not in the shadow DOM. Shadow DOM queries will never find it. Assert on the host's children and use the slot API to verify distribution.
+Slotted content lives in the light DOM (on the host), not in the shadow DOM. shadow DOM queries will
+never find it. Assert on the host's children and use the slot API to verify distribution.
 
 **Incorrect:**
 
@@ -82,7 +83,7 @@ it('renders fallback when slot is empty', async () => {
 **Slot assertion patterns:**
 
 | Goal | How to assert |
-|------|---------------|
+| ------ | --------------- |
 | Element is slotted | `el.querySelector('[slot="name"]')` exists |
 | Slot received elements | `slot.assignedElements().length > 0` |
 | Correct element assigned | `slot.assignedElements()[0].tagName` or text content |

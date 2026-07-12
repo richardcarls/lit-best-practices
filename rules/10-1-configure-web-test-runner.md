@@ -7,7 +7,9 @@ tags: testing, web-test-runner, open-wc, configuration, setup
 
 ## Configure @web/test-runner with @open-wc/testing
 
-`@web/test-runner` runs tests in a real browser, which is the correct environment for custom elements. `@open-wc/testing` extends Chai with DOM-aware assertions and provides the `fixture()` helper. Without the right configuration, tests may pass while the component is broken.
+`@web/test-runner` runs tests in a real browser, which is the correct environment for custom
+elements. `@open-wc/testing` extends Chai with DOM-aware assertions and provides the `fixture()`
+helper. Without the right configuration, tests may pass while the component is broken.
 
 **Incorrect:**
 
@@ -85,11 +87,15 @@ describe('MyElement', () => {
 **Symptom diagnosis:**
 
 | Symptom | Likely cause | Fix |
-|---------|-------------|-----|
+| --------- | ------------- | ----- |
 | `customElements.get(...)` returns undefined | Component file not imported in test | Add `import '../src/my-element.js'` |
 | `el.shadowRoot` is null | Component hasn't rendered yet | `await fixture()` waits for first update |
 | Properties set but DOM not updated | Missing `await el.updateComplete` | Await before assertion (see rule 10-3) |
 | `expect(...).to.equalSnapshot()` not found | Missing `@open-wc/testing` import | Import from `'@open-wc/testing'` not `'chai'` |
 | Tests pass in CI but fail locally | Browser binary not installed | Run `npx playwright install chromium` |
 
-**Vitest browser mode alternative:** For current projects, Vitest browser mode with the Playwright provider is also a strong default. Prefer Playwright-backed Chrome and Firefox projects when validating custom element timing, native controls, focus behavior, and cross-browser event semantics. Web Test Runner with open-wc remains a good fit for libraries already standardized on that stack.
+**Vitest browser mode alternative:** For current projects, Vitest browser mode with the Playwright
+provider is also a strong default. Prefer Playwright-backed Chrome and Firefox projects when
+validating custom element timing, native controls, focus behavior, and cross-browser event
+semantics. Web Test Runner with open-wc remains a good fit for libraries already standardized on
+that stack.

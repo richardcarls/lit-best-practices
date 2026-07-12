@@ -63,6 +63,7 @@ render() {
 ```
 
 Benefits:
+
 - Computation only runs when dependencies change
 - `render()` stays simple and fast
 - State is available for multiple renders without recalculation

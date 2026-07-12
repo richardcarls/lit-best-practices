@@ -7,7 +7,9 @@ tags: testing, updateComplete, async, rendering, assertions
 
 ## Await updateComplete Before DOM Assertions
 
-Lit's rendering is asynchronous. Setting a property enqueues an update — the DOM reflects that change only after `updateComplete` resolves. Asserting immediately after a property change reads the previous render.
+Lit's rendering is asynchronous. Setting a property enqueues an update; the DOM reflects that change
+only after `updateComplete` resolves. Asserting immediately after a property change reads the
+previous render.
 
 **Incorrect:**
 
@@ -56,7 +58,7 @@ it('disables the button', async () => {
 });
 ```
 
-**Multiple property changes — one await is enough:**
+**Multiple property changes; one await is enough:**
 
 ```typescript
 it('handles combined state', async () => {
@@ -75,7 +77,8 @@ it('handles combined state', async () => {
 
 **When `fixture()` already handles the first await:**
 
-`await fixture()` resolves after `updateComplete` — no extra await is needed for the initial render. Only await again after subsequent property mutations.
+`await fixture()` resolves after `updateComplete`; no extra await is needed for the initial render.
+Only await again after subsequent property mutations.
 
 ```typescript
 const el = await fixture<MyEl>(html`<my-el value="hello"></my-el>`);
@@ -89,9 +92,13 @@ expect(el.shadowRoot!.querySelector('.value')?.textContent).to.equal('world');
 
 **Slotchange-deferred state requires a microtask flush:**
 
-When a `slotchange` handler defers its mutations via `queueMicrotask` (see rule `5-6-defer-slotchange-mutations.md`), `await host.updateComplete` is not enough — it resolves before the microtask queue drains. Tests that immediately interact with slot-driven state (clicking options, pressing arrow keys) will find an uninitialized component.
+When a `slotchange` handler defers its mutations via `queueMicrotask` (see rule
+`5-6-defer-slotchange-mutations.md`), `await host.updateComplete` is not enough; it resolves before
+the microtask queue drains. Tests that immediately interact with slot-driven state (clicking
+options, pressing arrow keys) will find an uninitialized component.
 
-Add a microtask flush in any test helper that returns a freshly rendered host from a component that defers slot initialization:
+Add a microtask flush in any test helper that returns a freshly rendered host from a component that
+defers slot initialization:
 
 ```typescript
 async function getHost(screen): Promise<MySelect> {
@@ -102,7 +109,8 @@ async function getHost(screen): Promise<MySelect> {
 }
 ```
 
-`setTimeout(r, 0)` schedules a macrotask — it runs after all pending microtasks (including the `queueMicrotask` callback) have flushed.
+`setTimeout(r, 0)` schedules a macrotask; it runs after all pending microtasks (including the
+`queueMicrotask` callback) have flushed.
 
 **Write assertions that check values, not just types:**
 
@@ -122,4 +130,7 @@ expect(handler).toHaveBeenCalledOnce();
 expect(handler).toHaveBeenCalledOnceWith(expect.objectContaining({ value: 'apple' }));
 ```
 
-**Cross-browser timing coverage:** Add browser tests for property writes before connection, property writes before slot assignment, late slotted child insertion, child replacement, silent host writes, native fallback synchronization, and focus behavior that crosses shadow boundaries. These are the integration cases that jsdom-style tests most often miss.
+**Cross-browser timing coverage:** Add browser tests for property writes before connection, property
+writes before slot assignment, late slotted child insertion, child replacement, silent host writes,
+native fallback synchronization, and focus behavior that crosses shadow boundaries. These are the
+integration cases that jsdom-style tests most often miss.

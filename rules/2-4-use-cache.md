@@ -10,6 +10,7 @@ tags: performance, caching, conditional-rendering, directives
 Use `cache()` when switching between complex template alternatives.
 
 **When to use cache():**
+
 - Switching between views/tabs with complex content
 - Conditional content that should preserve state
 - Expensive-to-recreate subtrees
@@ -46,4 +47,5 @@ render() {
 }
 ```
 
-The `cache()` directive stores rendered DOM for each template branch, so switching back restores the previous state rather than recreating from scratch.
+The `cache()` directive stores rendered DOM for each template branch, so switching back restores the
+previous state rather than recreating from scratch.

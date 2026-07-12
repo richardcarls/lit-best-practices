@@ -1,14 +1,16 @@
 ---
-title: Light DOM Progressive Enhancement
+title: light DOM Progressive Enhancement
 priority: HIGH
 category: Custom Element Interop/API Design
 ---
 
-# Light DOM Progressive Enhancement
+# light DOM Progressive Enhancement
 
 ## Rule
 
-When a custom element enhances a native control, keep the light DOM native element as a declarative source and fallback. Capture its initial state, handle late insertion/replacement, and keep it synchronized with the component's current state.
+When a custom element enhances a native control, keep the light DOM native element as a declarative
+source and fallback. Capture its initial state, handle late insertion/replacement, and keep it
+synchronized with the component's current state.
 
 ## Incorrect
 
@@ -45,7 +47,10 @@ private _handleLightDomChanged() {
 
 ## Why It Matters
 
-HTML authors should be able to write a useful fallback such as `<wc-select><select><option selected>...</option></select></wc-select>`. Framework authors should also be able to replace slotted children without racing the component. The custom element owns this timing and synchronization work.
+HTML authors should be able to write a useful fallback such as `<wc-select><select><option
+selected>...</option></select></wc-select>`. Framework authors should also be able to replace
+slotted children without racing the component. The custom element owns this timing and
+synchronization work.
 
 ## Related Rules
 

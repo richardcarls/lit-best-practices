@@ -7,7 +7,9 @@ tags: testing, fixture, open-wc, rendering, instantiation
 
 ## Use fixture() for Component Instantiation
 
-`fixture()` from `@open-wc/testing` connects the element to a real document, waits for the first render cycle, and registers cleanup after each test. `document.createElement` does none of these — the shadow DOM is empty and `firstUpdated` never runs.
+`fixture()` from `@open-wc/testing` connects the element to a real document, waits for the first
+render cycle, and registers cleanup after each test. `document.createElement` does none of these;
+the shadow DOM is empty and `firstUpdated` never runs.
 
 **Incorrect:**
 
@@ -68,9 +70,10 @@ it('renders slotted content', async () => {
 **fixture() vs alternatives:**
 
 | Method | Renders? | Awaits update? | Cleans up? | Use when |
-|--------|----------|----------------|------------|----------|
-| `await fixture(html\`...\`)` | Yes | Yes | Yes | Always — default choice |
+| -------- | ---------- | ---------------- | ------------ | ---------- |
+| `await fixture(html\`...\`)` | Yes | Yes | Yes | Always; default choice |
 | `fixtureSync(html\`...\`)` | Yes | No | Yes | Synchronous setup before awaiting manually |
 | `document.createElement` | No | No | No | Never in Lit component tests |
 
-`fixture()` appends to a `<div>` in the document body and removes it in an `afterEach` hook — tests are automatically isolated without manual cleanup.
+`fixture()` appends to a `<div>` in the document body and removes it in an `afterEach` hook; tests
+are automatically isolated without manual cleanup.

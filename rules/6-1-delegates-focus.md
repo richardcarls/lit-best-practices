@@ -73,6 +73,7 @@ export class FancyInput extends LitElement {
 ```
 
 **With `delegatesFocus: true`:**
+
 - Clicking anywhere on the host focuses the first focusable element inside
 - Calling `element.focus()` focuses the internal element
 - `:focus-within` on `:host` works correctly

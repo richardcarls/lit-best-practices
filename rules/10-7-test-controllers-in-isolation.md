@@ -7,7 +7,8 @@ tags: testing, reactive-controllers, unit-testing, mock-host, isolation
 
 ## Test Reactive Controllers Without a Host Element
 
-Reactive controllers implement logic that can be tested independently by providing a minimal mock host. This avoids rendering a full component just to exercise controller behavior.
+Reactive controllers implement logic that can be tested independently by providing a minimal mock
+host. This avoids rendering a full component just to exercise controller behavior.
 
 **Incorrect:**
 
@@ -102,4 +103,5 @@ class MockHost implements ReactiveControllerHost {
 }
 ```
 
-Isolating controllers this way makes the test suite faster (no browser rendering cycle), more focused, and resilient to component template changes.
+Isolating controllers this way makes the test suite faster (no browser rendering cycle), more
+focused, and resilient to component template changes.

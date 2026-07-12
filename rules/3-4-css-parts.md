@@ -50,4 +50,5 @@ fancy-card::part(footer) {
 }
 ```
 
-CSS parts provide an explicit styling API without exposing all internal structure. Only add parts for elements that genuinely need external customization.
+CSS parts provide an explicit styling API without exposing all internal structure. Only add parts
+for elements that genuinely need external customization.

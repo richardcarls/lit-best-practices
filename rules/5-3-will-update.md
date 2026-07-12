@@ -51,18 +51,19 @@ render() {
 **Lifecycle timing:**
 
 | Method | When | Use for |
-|--------|------|---------|
+| -------- | ------ | --------- |
 | `willUpdate` | Before render | Compute derived state |
 | `render` | During update | Return template |
 | `updated` | After render | Side effects, DOM operations, events |
 
-Setting `@state()` or `@property()` values in `updated` triggers a new update cycle. Do this only when intentional (rare).
+Setting `@state()` or `@property()` values in `updated` triggers a new update cycle. Do this only
+when intentional (rare).
 
 **Cross-property invariants:**
 
 Use `willUpdate(changedProperties)` when multiple reactive values must be reconciled before
 the DOM is rendered. It runs synchronously before every render, including the first render,
-and `changedProperties` contains all initially-set properties on that first call.
+and `changedProperties` contains all initially set properties on that first call.
 
 ```typescript
 willUpdate(changedProperties: PropertyValues<this>) {

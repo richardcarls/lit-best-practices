@@ -7,7 +7,7 @@ tags: rendering, side-effects, correctness, purity
 
 ## Keep render() Pure
 
-The `render()` method must be pure—no side effects, mutations, or async operations.
+The `render()` method must be pure: no side effects, mutations, or async operations.
 
 **Incorrect:**
 
@@ -53,4 +53,5 @@ updated(changedProperties: PropertyValues) {
 }
 ```
 
-The `render()` method may be called multiple times and should always return the same output for the same state.
+The `render()` method may be called multiple times and should always return the same output for the
+same state.

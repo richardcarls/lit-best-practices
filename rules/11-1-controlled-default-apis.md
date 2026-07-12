@@ -8,7 +8,8 @@ category: Custom Element Interop/API Design
 
 ## Rule
 
-Expose canonical controlled and uncontrolled properties for user-editable state. Use `value`/`defaultValue` for form-like components and `open`/`defaultOpen` for disclosure components.
+Expose canonical controlled and uncontrolled properties for user-editable state. Use
+`value`/`defaultValue` for form-like components and `open`/`defaultOpen` for disclosure components.
 
 ## Incorrect
 
@@ -53,10 +54,12 @@ export class WcDialog extends LitElement {
 
 ## Why It Matters
 
-Frameworks can pass properties before connection, during render, or after a slot update. A predictable `value`/`defaultValue` or `open`/`defaultOpen` contract makes those writes declarative and avoids wrapper-level timers, imperative setup calls, and hidden state duplication.
+Frameworks can pass properties before connection, during render, or after a slot update. A
+predictable `value`/`defaultValue` or `open`/`defaultOpen` contract makes those writes declarative
+and avoids wrapper-level timers, imperative setup calls, and hidden state duplication.
 
 ## Related Rules
 
 - [11-2 Silent Host Writes](11-2-silent-host-writes.md)
-- [11-3 Light DOM Progressive Enhancement](11-3-light-dom-progressive-enhancement.md)
+- [11-3 light DOM Progressive Enhancement](11-3-light-dom-progressive-enhancement.md)
 - [1-4 Always Provide Default Values](1-4-default-values.md)

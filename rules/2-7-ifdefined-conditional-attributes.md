@@ -29,7 +29,7 @@ style=${ifDefined(this.display === 'float' ? this._floatStyle() : undefined)}
 
 ## When it matters most
 
-- **`style` attribute**: `style=""` is subtly different from no `style` attribute — some
+- **`style` attribute**: `style=""` is subtly different from no `style` attribute; some
   external tooling or style-inheritance checks treat the empty string differently.
 - **`aria-*` attributes**: absence and empty-string differ semantically for AT.
 - **Boolean-like non-reflected attributes**: where the attribute's presence, not its value,
@@ -53,7 +53,7 @@ render() {
 ## Summary
 
 | Expression | Attribute result |
-|-----------|-----------------|
+| ----------- | ----------------- |
 | `attr=${ifDefined(undefined)}` | attribute **removed** |
 | `attr=${''}` | attribute set to empty string |
 | `attr=${nothing}` | attribute set to empty string (+ lint diagnostic risk) |
