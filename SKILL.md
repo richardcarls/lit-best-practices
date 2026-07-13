@@ -37,14 +37,14 @@ Reference these guidelines when:
 
 | Category | Rules | Focus |
 | ---------- | ------- | ------- |
-| 1. Component Structure | 5 rules | Properties, state, TypeScript, slots |
+| 1. Component Structure | 7 rules | Properties, state, TypeScript, slots |
 | 2. Rendering | 6 rules | Templates, directives, derived state |
 | 3. Styling | 8 rules | Static styles, theming, CSS parts, forced-colors safety |
 | 4. Events | 3 rules | Custom events, naming, cleanup |
 | 5. Lifecycle | 6 rules | Callbacks, timing, async, SSR safety |
 | 6. Accessibility | 4 rules | ARIA, focus, forms |
 | 7. Performance | 4 rules | Updates, caching, lazy loading |
-| 8. Reactive Controllers | 4 rules | Reusable behaviors, async tasks, observers |
+| 8. Reactive Controllers | 5 rules | Reusable behaviors, async tasks, observers |
 | 9. Context API | 3 rules | Cross-component state, provider scope |
 | 10. Testing | 9 rules | Setup, rendering, assertions, events, a11y |
 | 11. Custom Element Interop/API Design | 6 rules | Controlled/default APIs, events, light DOM, rich data |
@@ -67,6 +67,10 @@ Reference these guidelines when:
 - `rules/1-3-reflect-sparingly.md` - Reflect Properties Sparingly (MEDIUM)
 - `rules/1-4-default-values.md` - Always Provide Default Values (HIGH)
 - `rules/1-5-slot-composition.md` - Slot Composition Patterns (HIGH)
+- `rules/1-6-readonly-derived-attr-toggle-attribute.md` - Reflect a Read-Only Derived Boolean
+  with toggleAttribute (MEDIUM)
+- `rules/1-7-attribute-name-kebab-case.md` - Attribute Names Are Literal; Set Explicit
+  Kebab-Case for Multi-Word Properties (HIGH)
 
 ### 2. Rendering
 
@@ -129,6 +133,8 @@ Reference these guidelines when:
   Correctly (HIGH)
 - `rules/8-3-use-task-for-async.md` - Use @lit/task for Async Data Fetching (HIGH)
 - `rules/8-4-dom-observers-via-controller.md` - Wrap DOM Observers in Reactive Controllers (MEDIUM)
+- `rules/8-5-dynamic-controller-lifecycle.md` - Dynamic ReactiveController Add/Remove Lifecycle
+  (HIGH)
 
 ### 9. Context API
 
@@ -166,6 +172,8 @@ Reference these guidelines when:
 - `1-1-use-decorators.md`; property declarations + tsconfig `useDefineForClassFields: false`
 - `1-2-separate-state.md`; public vs internal state; Set/Map mutation trap
 - `1-5-slot-composition.md`; distributing light DOM
+- `1-7-attribute-name-kebab-case.md`; explicit kebab-case `attribute:` for multi-word properties
+- `1-6-readonly-derived-attr-toggle-attribute.md`; read-only derived boolean attributes
 - `3-1-static-styles.md`; styling approach
 - `3-5-css-system-colors.md`; accessible color defaults
 - `4-1-composed-events.md`; event configuration
@@ -184,6 +192,11 @@ Reference these guidelines when:
 
 - `8-3-use-task-for-async.md`; Task controller
 - `8-1-use-reactive-controllers.md`; controller pattern
+
+### Dynamically adding/removing controllers at runtime
+
+- `8-5-dynamic-controller-lifecycle.md`; addController fires hostConnected synchronously;
+  removeController does not fire hostDisconnected
 
 ### Code Review
 
