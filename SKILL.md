@@ -111,6 +111,8 @@ Reference these guidelines when:
 - `rules/5-6-defer-slotchange-mutations.md` - Defer DOM Mutations in Slotchange Handlers (CRITICAL)
 - `rules/5-7-readonly-render-seeding.md` - Seed Initial Render from firstUpdated for Read-Only
   Elements (HIGH)
+- `rules/5-8-updated-before-first-updated.md` - lit-updated-before-first-updated (HIGH)
+- `rules/5-9-attribute-before-connected.md` - Guard imperative DOM calls in property setters with isConnected (HIGH)
 
 ### 6. Accessibility
 
