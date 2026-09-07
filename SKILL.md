@@ -3,8 +3,6 @@ name: lit-best-practices
 description: |
   Lit web component best practices for AI-assisted coding, review, refactoring, and debugging. Use for Lit component design, rendering, styling, lifecycle, accessibility, performance, reactive controllers, context, tests, and custom element API or interop work.
 license: MIT
-author: community
-version: 1.3.0
 allowed-tools:
   - Read
   - Grep
@@ -112,7 +110,8 @@ Reference these guidelines when:
 - `rules/5-7-readonly-render-seeding.md` - Seed Initial Render from firstUpdated for Read-Only
   Elements (HIGH)
 - `rules/5-8-updated-before-first-updated.md` - lit-updated-before-first-updated (HIGH)
-- `rules/5-9-attribute-before-connected.md` - Guard imperative DOM calls in property setters with isConnected (HIGH)
+- `rules/5-9-attribute-before-connected.md` - Guard imperative DOM calls in property setters with
+  isConnected (HIGH)
 
 ### 6. Accessibility
 
@@ -239,53 +238,6 @@ Check for violations of CRITICAL rules:
 - `10-5-test-custom-events.md`; event assertions + synthetic event `composed` flag
 - `10-7-test-controllers-in-isolation.md`; unit testing controllers
 - `6-4-popover-focus-management.md`; keyboard/focus tests for popover-based components
-
-## Quick Reference
-
-### Essential Imports
-
-```typescript
-// Core
-import { LitElement, html, css, nothing } from 'lit';
-import { customElement, property, state, query } from 'lit/decorators.js';
-
-// Common Directives
-import { repeat } from 'lit/directives/repeat.js';
-import { cache } from 'lit/directives/cache.js';
-import { classMap } from 'lit/directives/class-map.js';
-import { until } from 'lit/directives/until.js';
-
-// Reactive Controllers
-import type { ReactiveController, ReactiveControllerHost } from 'lit';
-import { Task } from '@lit/task';
-
-// Context API
-import { createContext, provide, consume } from '@lit/context';
-
-// Testing
-import { fixture, expect, html, oneEvent } from '@open-wc/testing';
-// Or use Vitest browser mode with @vitest/browser-playwright for Chrome/Firefox.
-```
-
-### Component Skeleton
-
-```typescript
-@customElement('my-component')
-export class MyComponent extends LitElement {
-  static styles = css`
-    :host { display: block; }
-    :host([hidden]) { display: none; }
-  `;
-
-  @property({ type: String }) value = '';
-  @property({ type: Boolean, reflect: true }) disabled = false;
-  @state() private _internal = '';
-
-  render() {
-    return html`<slot></slot>`;
-  }
-}
-```
 
 ## Resources
 
