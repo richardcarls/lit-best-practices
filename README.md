@@ -5,7 +5,7 @@ optimized for code generation, review, and refactoring.
 
 ## Overview
 
-This skill contains 52 rules across 11 categories, prioritized by impact to guide automated
+This skill contains 66 rules across 11 categories, prioritized by impact to guide automated
 refactoring and code generation:
 
 | Category | Rules | Focus |
