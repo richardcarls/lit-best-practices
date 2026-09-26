@@ -36,15 +36,15 @@ Reference these guidelines when:
 | Category | Rules | Focus |
 | ---------- | ------- | ------- |
 | 1. Component Structure | 7 rules | Properties, state, TypeScript, slots |
-| 2. Rendering | 6 rules | Templates, directives, derived state |
+| 2. Rendering | 7 rules | Templates, directives, derived state |
 | 3. Styling | 8 rules | Static styles, theming, CSS parts, forced-colors safety |
 | 4. Events | 3 rules | Custom events, naming, cleanup |
-| 5. Lifecycle | 6 rules | Callbacks, timing, async, SSR safety |
+| 5. Lifecycle | 9 rules | Callbacks, timing, async, SSR safety |
 | 6. Accessibility | 4 rules | ARIA, focus, forms |
 | 7. Performance | 4 rules | Updates, caching, lazy loading |
 | 8. Reactive Controllers | 5 rules | Reusable behaviors, async tasks, observers |
 | 9. Context API | 3 rules | Cross-component state, provider scope |
-| 10. Testing | 9 rules | Setup, rendering, assertions, events, a11y |
+| 10. Testing | 10 rules | Setup, rendering, assertions, events, a11y |
 | 11. Custom Element Interop/API Design | 6 rules | Controlled/default APIs, events, light DOM, rich data |
 
 ## Priority Levels
@@ -155,6 +155,8 @@ Reference these guidelines when:
 - `rules/10-8-test-accessibility.md` - Test Accessibility with axe-core (MEDIUM)
 - `rules/10-9-dispatch-events-for-directive-listeners.md` - Dispatch Events for Directive Listeners
   in WebDriver Tests (HIGH)
+- `rules/10-10-close-native-popovers-before-fixture-cleanup.md` - Close Native Popovers Before
+  Fixture Cleanup (HIGH)
 
 ### 11. Custom Element Interop/API Design
 
@@ -238,6 +240,8 @@ Check for violations of CRITICAL rules:
 - `10-5-test-custom-events.md`; event assertions + synthetic event `composed` flag
 - `10-7-test-controllers-in-isolation.md`; unit testing controllers
 - `6-4-popover-focus-management.md`; keyboard/focus tests for popover-based components
+- `10-10-close-native-popovers-before-fixture-cleanup.md`; focus failures that appear only after
+  an earlier test left a popover open
 
 ## Resources
 
